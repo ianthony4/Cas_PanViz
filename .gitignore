@@ -1,0 +1,8 @@
+__pycache__/
+.pytest_cache/
+.venv/
+04_prototipo/estado/
+04_prototipo/logs/junit_*.xml
+04_prototipo/logs/acceso.log
+08_informe/node_modules/
+*.tmp

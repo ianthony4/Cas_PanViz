@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PANVIZ IRAS · Arequipa y Caylloma</title>
+<style>
+  :root { --tinta:#1d2733; --suave:#5b6775; --linea:#d9dee4; --fondo:#f6f7f9; --acento:#1f5f99; --ok:#2e7d4f; --mal:#b3261e; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family: "Segoe UI", Arial, sans-serif; color:var(--tinta); background:var(--fondo); font-size:15px; }
+  header { background:#fff; border-bottom:1px solid var(--linea); padding:14px 24px; display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  header h1 { font-size:18px; margin:0; flex:1; }
+  header small { color:var(--suave); font-weight:400; }
+  main { max-width:1150px; margin:0 auto; padding:20px 16px 60px; display:grid; gap:18px; }
+  section { background:#fff; border:1px solid var(--linea); border-radius:6px; padding:16px; }
+  h2 { font-size:15px; margin:0 0 12px; }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; }
+  .kpi { border:1px solid var(--linea); border-radius:6px; padding:10px 12px; }
+  .kpi b { display:block; font-size:24px; }
+  .kpi span { color:var(--suave); font-size:13px; }
+  table { border-collapse:collapse; width:100%; font-size:14px; }
+  th, td { border-bottom:1px solid var(--linea); padding:6px 8px; text-align:left; }
+  th { background:#f0f2f5; }
+  td.n { text-align:right; font-variant-numeric:tabular-nums; }
+  button, select, input { font:inherit; padding:6px 10px; border:1px solid var(--linea); border-radius:4px; background:#fff; }
+  button { cursor:pointer; }
+  button.prim { background:var(--acento); color:#fff; border-color:var(--acento); }
+  .fila { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .barra { height:12px; background:var(--acento); display:inline-block; vertical-align:middle; }
+  .barra.b2 { background:#7aa7cf; }
+  #mensaje { padding:8px 12px; border-radius:4px; display:none; }
+  #mensaje.ok { display:block; background:#e6f3ea; color:var(--ok); }
+  #mensaje.error { display:block; background:#fbe9e7; color:var(--mal); }
+  .muted { color:var(--suave); font-size:13px; }
+  #cronometro { font-variant-numeric:tabular-nums; font-weight:600; }
+</style>
+</head>
+<body>
+<header>
+  <h1>PANVIZ · Vigilancia de IRAS <small>Arequipa y Caylloma · prototipo local</small></h1>
+  <label>Usuario
+    <select id="usuario"></select>
+  </label>
+  <button id="btnImportar">Importar datos</button>
+  <input type="file" id="archivo" accept=".csv">
+  <button class="prim" id="btnPublicar">Publicar</button>
+</header>
+<main>
+  <div id="mensaje"></div>
+
+  <section>
+    <h2>Indicadores del conjunto actual</h2>
+    <div class="kpis">
+      <div class="kpi"><b id="kAcept">0</b><span>registros aceptados</span></div>
+      <div class="kpi"><b id="kRech">0</b><span>registros rechazados</span></div>
+      <div class="kpi"><b id="kInf">0</b><span>casos en menores de 5 años</span></div>
+      <div class="kpi"><b id="kMay">0</b><span>casos en 60 años a más</span></div>
+      <div class="kpi"><b id="kPub">–</b><span>versión publicada</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="fila" style="justify-content:space-between">
+      <h2>Resumen por distrito y grupo etario (solo aceptados)</h2>
+      <label>Distrito <select id="filtro"><option value="">Todos</option></select></label>
+    </div>
+    <table id="tResumen">
+      <thead><tr><th>Provincia</th><th>Distrito</th><th class="n">&lt;1 a</th><th class="n">1-4 a</th><th class="n">5-9 a</th><th class="n">10-19 a</th><th class="n">20-59 a</th><th class="n">60+ a</th><th class="n">Casos</th><th>Infantil (&lt;5) / 60+</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Registros rechazados y causa</h2>
+    <table id="tRech">
+      <thead><tr><th>Fila</th><th>ID</th><th>Campo</th><th>Causa</th><th>Valor recibido</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Medición de tareas de usuario (T09 y T10)</h2>
+    <div class="fila">
+      <select id="tarea">
+        <option value="T09">T09 · Identificar un registro con error y corregirlo</option>
+        <option value="T10">T10 · Localizar el resumen de un distrito</option>
+      </select>
+      <input id="participante" placeholder="Nombre del participante">
+      <button id="btnIniciar">Iniciar tarea</button>
+      <button id="btnTerminar" disabled>Terminar tarea</button>
+      <span id="cronometro">0.0 s</span>
+      <span class="muted" id="pasos"></span>
+    </div>
+    <p class="muted">El cronómetro cuenta los clics hechos durante la tarea. Al terminar se guarda en logs/usabilidad.csv.</p>
+  </section>
+</main>
+<script>
+const $ = s => document.querySelector(s);
+let tarea = null;
+
+function aviso(texto, tipo) { const m = $('#mensaje'); m.textContent = texto; m.className = tipo; }
+
+async function cargarUsuarios() {
+  const u = await (await fetch('/api/usuarios')).json();
+  $('#usuario').innerHTML = Object.entries(u).map(([n, r]) => `<option value="${n}">${n} (${r})</option>`).join('');
+}
+
+async function refrescar() {
+  const d = $('#filtro').value;
+  const e = await (await fetch('/api/estado' + (d ? '?distrito=' + encodeURIComponent(d) : ''))).json();
+  $('#kAcept').textContent = e.aceptados;
+  $('#kRech').textContent = e.rechazados.length;
+  $('#kPub').textContent = e.publicado.version ? 'v' + e.publicado.version : 'sin publicar';
+  const G = ['Menor de 1 año', '1 a 4 años', '5 a 9 años', '10 a 19 años', '20 a 59 años', '60 años a más'];
+  $('#kInf').textContent = e.resumen.reduce((a, r) => a + r.infantil_menor_5, 0);
+  $('#kMay').textContent = e.resumen.reduce((a, r) => a + r.adulto_mayor_60, 0);
+  const max = Math.max(1, ...e.resumen.map(r => r.casos));
+  $('#tResumen tbody').innerHTML = e.resumen.map(r => `<tr><td>${r.provincia}</td><td>${r.distrito}</td>
+    ${G.map(g => `<td class="n">${r[g]}</td>`).join('')}<td class="n"><b>${r.casos}</b></td>
+    <td><span class="barra" style="width:${r.infantil_menor_5 / max * 120}px" title="Menores de 5 años"></span><span class="barra b2" style="width:${r.adulto_mayor_60 / max * 120}px" title="60 años a más"></span></td></tr>`).join('')
+    || '<tr><td colspan="10" class="muted">Sin datos. Importe un archivo.</td></tr>';
+  if (!d) {
+    const actuales = new Set([...$('#filtro').options].map(o => o.value));
+    e.resumen.forEach(r => { if (!actuales.has(r.distrito)) $('#filtro').add(new Option(r.distrito, r.distrito)); });
+  }
+  $('#tRech tbody').innerHTML = e.rechazados.map(r => `<tr><td>${r.fila_datos}</td><td>${r.id}</td><td>${r.campo}</td><td>${r.motivo}</td>
+    <td>${r.valor || '<i class="muted">vacío</i>'}</td><td><button data-fila="${r.fila_datos}" data-campo="${r.campo}" data-valor="${r.valor}">Corregir</button></td></tr>`).join('')
+    || '<tr><td colspan="6" class="muted">No hay rechazados.</td></tr>';
+}
+
+$('#tRech').addEventListener('click', async ev => {
+  const b = ev.target.closest('button'); if (!b) return;
+  const valor = prompt(`Nuevo valor para "${b.dataset.campo}" (fila ${b.dataset.fila})`, b.dataset.valor);
+  if (valor === null) return;
+  const r = await fetch('/api/corregir', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ fila: +b.dataset.fila, campo: b.dataset.campo, valor, usuario: $('#usuario').value }) });
+  const j = await r.json();
+  r.ok ? aviso(`Corrección aplicada. Aceptados: ${j.total_conjunto_aceptado}, rechazados: ${j.rechazados}.`, 'ok') : aviso(j.detail, 'error');
+  refrescar();
+});
+
+$('#btnImportar').onclick = async () => {
+  const fd = new FormData(); fd.append('usuario', $('#usuario').value);
+  if ($('#archivo').files[0]) fd.append('archivo', $('#archivo').files[0]);
+  const r = await fetch('/api/importar', { method: 'POST', body: fd }); const j = await r.json();
+  r.ok ? aviso(`Importación: ${j.procesados} filas, ${j.aceptados_en_archivo} aceptadas, ${j.rechazados} rechazadas.`, 'ok') : aviso(j.detail, 'error');
+  refrescar();
+};
+
+$('#btnPublicar').onclick = async () => {
+  const r = await fetch('/api/publicar', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ usuario: $('#usuario').value }) });
+  const j = await r.json();
+  r.ok ? aviso(`Publicada la versión ${j.version} con ${j.registros} registros.`, 'ok') : aviso('Operación denegada: ' + j.detail, 'error');
+  refrescar();
+};
+
+$('#filtro').onchange = refrescar;
+
+// Medición de tareas
+let t0 = 0, clics = 0, timer = null;
+document.addEventListener('click', ev => { if (tarea && ev.target.id !== 'btnTerminar') { clics++; $('#pasos').textContent = clics + ' pasos'; } }, true);
+$('#btnIniciar').onclick = () => {
+  if (!$('#participante').value.trim()) { aviso('Escriba el nombre del participante.', 'error'); return; }
+  tarea = $('#tarea').value; t0 = performance.now(); clics = 0;
+  $('#btnIniciar').disabled = true; $('#btnTerminar').disabled = false;
+  timer = setInterval(() => $('#cronometro').textContent = ((performance.now() - t0) / 1000).toFixed(1) + ' s', 100);
+};
+$('#btnTerminar').onclick = async () => {
+  clearInterval(timer);
+  const seg = (performance.now() - t0) / 1000;
+  const completada = confirm('¿El participante completó la tarea correctamente?');
+  const obs = prompt('Observación del usuario (opcional)', '') || '';
+  await fetch('/api/tarea', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ tarea, participante: $('#participante').value, segundos: seg, pasos: clics, completada, observacion: obs }) });
+  aviso(`${tarea} registrada: ${seg.toFixed(1)} s, ${clics} pasos.`, 'ok');
+  tarea = null; $('#btnIniciar').disabled = false; $('#btnTerminar').disabled = true;
+};
+
+cargarUsuarios().then(refrescar);
+</script>
+</body>
+</html>

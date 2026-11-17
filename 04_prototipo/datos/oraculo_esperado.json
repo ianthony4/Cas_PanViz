@@ -1,0 +1,29 @@
+{
+  "descripcion": "Resultado esperado calculado manualmente sobre iras_sinteticos_30.csv antes de ejecutar el prototipo (base de T01 y T02). Filas 1-20 provienen del dataset sintético original del equipo (sinteticos_20_filas.csv); filas 21-30 lo amplían a 30 registros e incorporan Caylloma.",
+  "elaborado_por": "Mario Champi (requisitos) - revisado por Jael Huarca",
+  "total_filas": 30,
+  "aceptados": 24,
+  "rechazados": 6,
+  "invalidos_sembrados": [
+    {"fila_datos": 16, "id": "IRAS-2026-004", "campo": "id", "causa": "ID duplicado"},
+    {"fila_datos": 17, "id": "IRAS-2026-017", "campo": "establecimiento", "causa": "Campo obligatorio vacío"},
+    {"fila_datos": 18, "id": "IRAS-2026-018", "campo": "fecha_notificacion", "causa": "Fecha inexistente 2026-02-30"},
+    {"fila_datos": 19, "id": "IRAS-2026-019", "campo": "evento", "causa": "Evento distinto de IRAS (DENGUE)"},
+    {"fila_datos": 20, "id": "IRAS-2026-020", "campo": "grupo_etario", "causa": "Grupo etario fuera del catálogo MINSA"},
+    {"fila_datos": 27, "id": "IRAS-2026-027", "campo": "distrito", "causa": "Distrito fuera del ámbito Arequipa/Caylloma (Mollendo)"}
+  ],
+  "totales_por_distrito": {
+    "Arequipa":                      {"casos": 2, "Menor de 1 año": 0, "1 a 4 años": 1, "5 a 9 años": 0, "10 a 19 años": 0, "20 a 59 años": 1, "60 años a más": 0},
+    "Cayma":                         {"casos": 2, "Menor de 1 año": 0, "1 a 4 años": 0, "5 a 9 años": 1, "10 a 19 años": 0, "20 a 59 años": 0, "60 años a más": 1},
+    "Cerro Colorado":                {"casos": 4, "Menor de 1 año": 1, "1 a 4 años": 1, "5 a 9 años": 1, "10 a 19 años": 0, "20 a 59 años": 0, "60 años a más": 1},
+    "Chivay":                        {"casos": 3, "Menor de 1 año": 1, "1 a 4 años": 1, "5 a 9 años": 0, "10 a 19 años": 0, "20 a 59 años": 0, "60 años a más": 1},
+    "Jose Luis Bustamante y Rivero": {"casos": 2, "Menor de 1 año": 1, "1 a 4 años": 0, "5 a 9 años": 0, "10 a 19 años": 0, "20 a 59 años": 0, "60 años a más": 1},
+    "Majes":                         {"casos": 3, "Menor de 1 año": 1, "1 a 4 años": 0, "5 a 9 años": 1, "10 a 19 años": 0, "20 a 59 años": 0, "60 años a más": 1},
+    "Miraflores":                    {"casos": 2, "Menor de 1 año": 0, "1 a 4 años": 0, "5 a 9 años": 0, "10 a 19 años": 1, "20 a 59 años": 1, "60 años a más": 0},
+    "Paucarpata":                    {"casos": 3, "Menor de 1 año": 1, "1 a 4 años": 1, "5 a 9 años": 0, "10 a 19 años": 0, "20 a 59 años": 0, "60 años a más": 1},
+    "Yanahuara":                     {"casos": 3, "Menor de 1 año": 1, "1 a 4 años": 0, "5 a 9 años": 0, "10 a 19 años": 1, "20 a 59 años": 1, "60 años a más": 0}
+  },
+  "totales_por_grupo": {"Menor de 1 año": 6, "1 a 4 años": 4, "5 a 9 años": 3, "10 a 19 años": 2, "20 a 59 años": 3, "60 años a más": 6},
+  "poblacion_infantil_menor_5": 10,
+  "adulto_mayor_60_mas": 6
+}

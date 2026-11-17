@@ -146,3 +146,36 @@ Son sintéticos. Las primeras 20 notificaciones son las de nuestro trabajo anter
 - **Mario:** el commit que corrigió D01 (`f3ec0b8`, en `06_evidencias/historial_git.txt`), elaborado por Jael.
 - **Jael:** la matriz de trazabilidad (`03_requisitos_riesgos/matriz_trazabilidad.csv`), elaborada por Mario.
 - **Alexander:** el proceso estándar versión 2 (`02_procesos/proceso_estandar_v2.md`), elaborado por Anthony.
+
+---
+
+## Demostración en vivo de 1 minuto (prototipo + Grist)
+
+Se hace **una sola vez, al llegar a la diapositiva 14**, y la maneja Jael (o quien tenga el teclado) mientras habla. Las diapositivas 15 a 18 se explican después con las capturas, sin volver a la demo.
+
+### Preparación (5 minutos antes de exponer)
+
+1. En una terminal, desde la carpeta `Equipo04_Panviz`:
+   ```bash
+   ./demo.sh
+   ```
+   Este script deja el prototipo vacío, lo levanta en http://127.0.0.1:8000, abre el navegador y abre Grist Desktop con `PANVIZ_Evaluacion.grist`. No cierren esa terminal.
+2. En Grist, entren a la página **Tablero** y cierren el tutorial si aparece.
+3. Dejen las dos ventanas listas para cambiar entre ellas con Alt+Tab: el navegador con el prototipo y Grist.
+4. Usuario inicial en el prototipo: **digitador01**.
+5. **Plan B:** si algo no abre, sigan con las capturas de las diapositivas 14, 15, 17 y 18 y digan lo mismo.
+
+### Guion clic por clic
+
+| Tiempo | Acción en pantalla | Lo que se dice |
+|---|---|---|
+| 0:00–0:08 | Prototipo. Pulsar **Importar datos** | "Importamos las 30 notificaciones: el sistema acepta 24 y rechaza 6, cada una con su causa." |
+| 0:08–0:18 | En **Distrito**, elegir **Majes**. Luego volver a **Todos** | "El resumen solo cuenta los casos aceptados, por distrito y grupo de edad. Majes, en Caylloma, tiene 3 casos, uno de un adulto mayor." |
+| 0:18–0:30 | En la tabla de rechazados, fila **17** → **Corregir** → escribir `CS Cerro Colorado` → Aceptar | "Esta notificación llegó sin establecimiento. La corregimos aquí mismo y pasa a aceptados: ahora son 25." |
+| 0:30–0:40 | Pulsar **Publicar** con digitador01. Aparece el mensaje rojo. Cambiar el usuario a **resp.vigilancia** → **Publicar** | "Un digitador no puede publicar: el servidor lo bloquea y lo registra. El responsable sí puede, y se publica la versión 1." |
+| 0:40–0:50 | Alt+Tab a **Grist**, página Tablero, señalar los indicadores y los gráficos | "Este es el tablero de la evaluación en Grist. Los indicadores son fórmulas: los criterios evidenciados pasaron de 38 a 63 % y las debilidades abiertas de 5 a 3." |
+| 0:50–1:00 | En la tabla de criterios, filtro **Área** → **VER**. Clic en la evidencia **E16** | "Podemos filtrar por área o responsable, y desde cada criterio abrimos directamente su evidencia." |
+
+**Al terminar:** volver a PowerPoint y continuar con la diapositiva 15.
+
+**Si quieren repetir la demo desde cero** (por ejemplo, en un ensayo), cierren con Ctrl+C la terminal de `demo.sh` y vuelvan a ejecutarlo.

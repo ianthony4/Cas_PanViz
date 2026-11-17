@@ -33,7 +33,10 @@ def test_d01_lote_corregido_no_deja_registros_obsoletos(entorno, oraculo, tmp_pa
 
 def test_d02_vista_escapa_valores_del_csv(observar):
     html = (ROOT / "src" / "templates" / "index.html").read_text(encoding="utf-8")
-    interpolaciones = re.findall(r"\$\{(r\.[a-z_]+|r\['[^']+'\]|r\.valor[^}]*)\}", html)
-    sin_escapar = [i for i in interpolaciones if not i.startswith("esc(")]
+    # una interpolación es insegura si, al quitar las llamadas esc(...), aún usa datos del registro (r.x / r['x']);
+    # se exceptúan los anchos de barra, que son cálculos numéricos (contienen "/ max").
+    interpolaciones = re.findall(r"\$\{([^}]*)\}", html)
+    sin_escapar = [i for i in interpolaciones
+                   if re.search(r"\br(\.|\[)", re.sub(r"esc\([^)]*\)", "", i)) and "/ max" not in i]
     observar({"interpolaciones_sin_escapar": sin_escapar})
     assert not sin_escapar

@@ -126,7 +126,7 @@ async function refrescar() {
     e.resumen.forEach(r => { if (!actuales.has(r.distrito)) $('#filtro').add(new Option(r.distrito, r.distrito)); });
   }
   $('#tRech tbody').innerHTML = e.rechazados.map(r => `<tr><td>${esc(r.fila_datos)}</td><td>${esc(r.id)}</td><td>${esc(r.campo)}</td><td>${esc(r.motivo)}</td>
-    <td>${r.valor ? esc(r.valor) : '<i class="muted">vacío</i>'}</td><td><button data-fila="${esc(r.fila_datos)}" data-campo="${esc(r.campo)}" data-valor="${esc(r.valor)}">Corregir</button></td></tr>`).join('')
+    <td>${esc(r.valor) || '<i class="muted">vacío</i>'}</td><td><button data-fila="${esc(r.fila_datos)}" data-campo="${esc(r.campo)}" data-valor="${esc(r.valor)}">Corregir</button></td></tr>`).join('')
     || '<tr><td colspan="6" class="muted">No hay rechazados.</td></tr>';
 }
 

@@ -1,0 +1,6 @@
+{
+  "name": "panviz-presentacion",
+  "private": true,
+  "description": "Dependencias para regenerar la presentación (npm install dentro de 08_informe)",
+  "dependencies": { "pptxgenjs": "3.12.0" }
+}

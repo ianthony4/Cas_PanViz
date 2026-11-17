@@ -1,0 +1,25 @@
+ID,Area,Descripcion,Responsable,Estado (después),Estado (antes),Justificacion,Evidencia enlazada (después),Evidencia enlazada (antes)
+OPD-C1,OPD,Existe un proceso estándar versionado con entradas actividades salidas responsables y plantillas,Anthony Chaisa,Evidenciado,Evidenciado,PE-04 v1 con seis actividades y tres plantillas,"E02, E04","E02, E04"
+OPD-C2,OPD,El estándar se aplica en los dos flujos con una adaptación justificada,Anthony Chaisa,Evidenciado,Evidenciado,La guía de adaptación asigna requisitos pruebas y módulos a F1 y F2 y justifica A-01,"E03, E07, E13","E03, E07"
+OPD-C3,OPD,Otro integrante revisó la adaptación del estándar,Mario Champi,No evidenciado,No evidenciado,Requiere el acta de revisión cruzada de la sesión del equipo,,
+OPD-C4,OPD,Una lección aprendida se incorporó al estándar en una versión 2,Anthony Chaisa,Evidenciado,No evidenciado,PE-04 v2 agrega tres controles derivados de H01 H02 y H03 (CP-01),"E05, E06",
+IPM-C1,IPM,Existe un plan del equipo basado en el estándar con alcance roles cronograma y muestra,Anthony Chaisa,Evidenciado,Evidenciado,Plan de 1-2 páginas con decisiones de la lectura TMMi,"E01, E26",E01
+IPM-C2,IPM,El proyecto siguió el proceso adaptado y el historial lo demuestra,Jael Huarca,Evidenciado,Parcial,Antes solo había un commit de v1; después el historial muestra prueba corrección y cambio con motivo,"E06, E12",E11
+IPM-C3,IPM,Otro integrante revisó el plan,Mario Champi,No evidenciado,No evidenciado,Requiere el acta de revisión cruzada (Mario revisa el plan de Anthony),,
+IPM-C4,IPM,Se da seguimiento al plan con desviaciones y acciones,Anthony Chaisa,Evidenciado,Parcial,El seguimiento registra la reasignación de roles y los hitos parciales,E19,E19
+RD-C1,RD,Existen 6 requisitos con criterio de aceptación medible,Mario Champi,Evidenciado,Evidenciado,R1-R6 con umbral o dato verificable,E07,E07
+RD-C2,RD,Cada requisito está trazado a pruebas y a un oráculo independiente,Mario Champi,Evidenciado,Evidenciado,Trazabilidad 6 de 6 requisitos y oráculo calculado antes de ejecutar,"E08, E10, E15","E08, E10"
+RD-C3,RD,Otro integrante revisó la trazabilidad,Jael Huarca,No evidenciado,No evidenciado,Requiere el acta de revisión cruzada (Jael revisa a Mario),,
+RD-C4,RD,Los requisitos se actualizan con control de cambios,Mario Champi,Evidenciado,No evidenciado,CRQ-01 aclara R4 y CR-01 agrega RV6 con motivo revisor y aprobador,"E06, E07",
+RSKM-C1,RSKM,Existen 5 riesgos con probabilidad impacto respuesta y responsable,Mario Champi,Evidenciado,Evidenciado,Registro con exposición y prioridad,E09,E09
+RSKM-C2,RSKM,Los riesgos están vinculados a requisitos pruebas o acciones,Mario Champi,Evidenciado,Evidenciado,Cada riesgo apunta a requisitos y pruebas concretas,"E09, E08","E09, E08"
+RSKM-C3,RSKM,Otro integrante revisó el registro de riesgos,Anthony Chaisa,No evidenciado,No evidenciado,Requiere el acta de revisión cruzada,,
+RSKM-C4,RSKM,El estado de los riesgos se actualiza con lo observado,Mario Champi,Evidenciado,No evidenciado,RK1 y RK4 se marcaron como materializados en v1 y controlados en v2,"E09, E16",
+VER-C1,VER,Existen lista de revisión y plan de pruebas,Alexander Villafuerte,Evidenciado,Evidenciado,Lista de revisión v2 y plan T01-T12 repetible,"E04, E13","E04, E13"
+VER-C2,VER,Las 12 pruebas se ejecutan y registran esperado y observado,Alexander Villafuerte,Parcial,Parcial,v1: 9 de 12 ejecutadas; v2: 10 de 12; T09 y T10 requieren la sesión con usuario,"E14, E15",E14
+VER-C3,VER,Revisión independiente del código y los resultados por otro integrante,Alexander Villafuerte,No evidenciado,No evidenciado,Requiere el acta de revisión cruzada (Alexander revisa código y logs de Jael),,
+VER-C4,VER,Los defectos se registran se corrigen y se re-verifican,Alexander Villafuerte,Evidenciado,Parcial,v1: D01 y D02 registrados sin corregir; v2: corregidos y re-verificados,"E15, E16, E12",E16
+VAL-C1,VAL,Existen 2 escenarios de validación con criterio de aceptación,Alexander Villafuerte,Evidenciado,Evidenciado,VAL-1 y VAL-2 basados en tareas reales del responsable de vigilancia,E20,E20
+VAL-C2,VAL,Los escenarios se ejecutan con un usuario simulado,Mario Champi,No evidenciado,No evidenciado,Requiere la sesión con usuario y el log de usabilidad,,
+VAL-C3,VAL,Existe acta de aceptación o rechazo del usuario,Mario Champi,No evidenciado,No evidenciado,Requiere el acta de validación de la sesión,,
+VAL-C4,VAL,Las observaciones del usuario se convierten en acciones,Anthony Chaisa,No evidenciado,No evidenciado,Requiere la entrevista de validación y el acta de usuario,,

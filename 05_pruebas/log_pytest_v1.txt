@@ -1,0 +1,77 @@
+Ejecución 2026-11-16T21:06:35 · versión v1 · commit 9890135 (codigo v1.0 + pruebas d18a818)
+
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.2.0, pluggy-1.7.0 -- /home/achaisa/unsa/Cas-Scampi/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /tmp/tmp.bCoirPrZkx/wt/04_prototipo
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.16.0
+collecting ... collected 14 items
+
+tests/test_calidad.py::test_t01_rechaza_seis_invalidos_sembrados PASSED  [  7%]
+tests/test_calidad.py::test_t02_totales_por_distrito_igual_calculo_manual PASSED [ 14%]
+tests/test_calidad.py::test_t03_tiempo_importacion_30_filas PASSED       [ 21%]
+tests/test_calidad.py::test_t04_tiempo_actualizacion_resumen PASSED      [ 28%]
+tests/test_calidad.py::test_t05_importar_dos_veces_no_duplica PASSED     [ 35%]
+tests/test_calidad.py::test_t06_reinicio_recupera_ultimo_conjunto PASSED [ 42%]
+tests/test_calidad.py::test_t07_publicacion_sin_permiso_denegada PASSED  [ 50%]
+tests/test_calidad.py::test_t08_rechazo_no_modifica_publicado PASSED     [ 57%]
+tests/test_calidad.py::test_t09_t10_tareas_de_usuario[T09] SKIPPED (...) [ 64%]
+tests/test_calidad.py::test_t09_t10_tareas_de_usuario[T10] SKIPPED (...) [ 71%]
+tests/test_calidad.py::test_t11_nueva_regla_sin_modificar_vista SKIPPED  [ 78%]
+tests/test_calidad.py::test_t12_regresion_tras_cambio PASSED             [ 85%]
+tests/test_defectos.py::test_d01_lote_corregido_no_deja_registros_obsoletos FAILED [ 92%]
+tests/test_defectos.py::test_d02_vista_escapa_valores_del_csv FAILED     [100%]
+
+=================================== FAILURES ===================================
+_____________ test_d01_lote_corregido_no_deja_registros_obsoletos ______________
+
+entorno = PosixPath('/tmp/pytest-of-achaisa/pytest-10/test_d01_lote_corregido_no_dej0')
+oraculo = {'descripcion': 'Resultado esperado calculado manualmente sobre iras_sinteticos_30.csv antes de ejecutar el prototipo ...ma.', 'elaborado_por': 'Mario Champi (requisitos) - revisado por Jael Huarca', 'total_filas': 30, 'aceptados': 24, ...}
+tmp_path = PosixPath('/tmp/pytest-of-achaisa/pytest-10/test_d01_lote_corregido_no_dej0')
+observar = <function observar.<locals>._registrar at 0x7fd62bd93880>
+
+    def test_d01_lote_corregido_no_deja_registros_obsoletos(entorno, oraculo, tmp_path, observar):
+        servicio.importar(config.ARCHIVO_ENTRADA_DEFAULT)
+        texto = config.ARCHIVO_ENTRADA_DEFAULT.read_text(encoding="utf-8")
+        lote = tmp_path / "lote_corregido.csv"
+        lote.write_text(texto.replace("IRAS-2026-001,2026-01-12", "IRAS-2026-001,2026-13-12"), encoding="utf-8")
+        servicio.importar(lote)
+        aceptados = {r["id"] for r in json.loads(config.ARCHIVO_ACEPTADOS.read_text(encoding="utf-8"))}
+        # los rechazos por ID duplicado conviven legítimamente con el primer registro aceptado
+        rechazados = {r["id"] for r in servicio.estado()["rechazados"] if r["campo"] != "id"}
+        cerro = next(f for f in servicio.estado()["resumen"] if f["distrito"] == "Cerro Colorado")
+        observar({"aceptados": len(aceptados), "en_ambos": sorted(aceptados & rechazados), "casos_cerro_colorado": cerro["casos"]})
+>       assert not (aceptados & rechazados)
+E       AssertionError: assert not ({'IRAS-2026-001', 'IRAS-2026-002', 'IRAS-2026-003', 'IRAS-2026-004', 'IRAS-2026-005', 'IRAS-2026-006', ...} & {'IRAS-2026-001', 'IRAS-2026-017', 'IRAS-2026-018', 'IRAS-2026-019', 'IRAS-2026-020', 'IRAS-2026-027'})
+
+tests/test_defectos.py:29: AssertionError
+____________________ test_d02_vista_escapa_valores_del_csv _____________________
+
+observar = <function observar.<locals>._registrar at 0x7fd62bd91760>
+
+    def test_d02_vista_escapa_valores_del_csv(observar):
+        html = (ROOT / "src" / "templates" / "index.html").read_text(encoding="utf-8")
+        # una interpolación es insegura si, al quitar las llamadas esc(...), aún usa datos del registro (r.x / r['x']);
+        # se exceptúan los anchos de barra, que son cálculos numéricos (contienen "/ max").
+        interpolaciones = re.findall(r"\$\{([^}]*)\}", html)
+        sin_escapar = [i for i in interpolaciones
+                       if re.search(r"\br(\.|\[)", re.sub(r"esc\([^)]*\)", "", i)) and "/ max" not in i]
+        observar({"interpolaciones_sin_escapar": sin_escapar})
+>       assert not sin_escapar
+E       assert not ['r.provincia', 'r.distrito', 'G.map(g => `<td class="n">${r[g]', 'r.casos', 'r.fila_datos', 'r.id', ...]
+
+tests/test_defectos.py:42: AssertionError
+=============================== warnings summary ===============================
+tests/test_calidad.py::test_t07_publicacion_sin_permiso_denegada
+  /home/achaisa/unsa/Cas-Scampi/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+-- generated xml file: /tmp/tmp.bCoirPrZkx/wt/04_prototipo/logs/junit_v1.xml ---
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_calidad.py:176: T09 no ejecutada: no hay sesión registrada en logs/usabilidad.csv
+SKIPPED [1] tests/test_calidad.py:176: T10 no ejecutada: no hay sesión registrada en logs/usabilidad.csv
+SKIPPED [1] tests/test_calidad.py:188: T11 no ejecutada: la regla regla_fecha_no_futura aún no se ha incorporado
+============== 2 failed, 9 passed, 3 skipped, 1 warning in 0.33s ===============

@@ -1,0 +1,87 @@
+{
+  "T01": {
+    "aceptados": 24,
+    "rechazados": 6,
+    "detectados_del_oraculo": 6,
+    "falsos_rechazos": 0
+  },
+  "T02": {
+    "casos_total": 24,
+    "menores_5": 10,
+    "60_a_mas": 6,
+    "distritos": 9,
+    "diferencias": [],
+    "distritos_extra": []
+  },
+  "T03": {
+    "tiempos_s": [
+      0.0008,
+      0.0007,
+      0.0007
+    ],
+    "maximo_s": 0.0008,
+    "entorno": "Linux 6.12.117+deb13-amd64 / Python 3.13.5 / x86_64"
+  },
+  "T04": {
+    "tiempos_s": [
+      0.0017,
+      0.0013,
+      0.0009
+    ],
+    "maximo_s": 0.0017
+  },
+  "T05": {
+    "aceptados_antes": 24,
+    "aceptados_despues": 24,
+    "ids_unicos": 24,
+    "casos_en_resumen": 24
+  },
+  "T06": {
+    "proceso_nuevo": {
+      "aceptados": 24,
+      "publicado": 24,
+      "version": 1
+    },
+    "archivos": [
+      "conjunto_aceptado.json",
+      "entrada_trabajo.csv",
+      "publicado.json",
+      "rechazados.json"
+    ]
+  },
+  "T07": {
+    "http_digitador": 403,
+    "http_desconocido": 403,
+    "lineas_denegadas_en_log": 3,
+    "ultima_linea": "2026-11-16T21:08:47\tintruso\tpublicar\tDENEGADO"
+  },
+  "T08": {
+    "hash_antes": "d3683886b11cd21b",
+    "hash_despues": "d3683886b11cd21b",
+    "version": 1,
+    "registros_publicados": 24,
+    "aceptados_actuales": 25
+  },
+  "T11": {
+    "rechazo_futuro": "Fecha de notificación posterior a la fecha de corte: 2029-01-01",
+    "hash_vista": {
+      "src/web.py": "79d250c3046670e4",
+      "src/templates/index.html": "45d6491351017943"
+    },
+    "vista_referencia_reglas": []
+  },
+  "T12": {
+    "rechazados": 6,
+    "aceptados": 24,
+    "resumen_ok": true,
+    "publicacion_denegada": true
+  },
+  "D01": {
+    "aceptados": 23,
+    "en_ambos": [],
+    "casos_cerro_colorado": 3
+  },
+  "D02": {
+    "interpolaciones_sin_escapar": []
+  }
+}

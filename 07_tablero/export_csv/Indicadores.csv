@@ -1,0 +1,3 @@
+Momento,Version,Criterios con evidencia,Cobertura documental %,Criterios evidenciados,Criterios evidenciados %,Pruebas ejecutadas,Pruebas pendientes,Ejecución de pruebas %,Éxito de pruebas %,Debilidades abiertas
+Antes,v1,13,54.2,9,37.5,9,3,75,100,5
+Después,v2,16,66.7,15,62.5,10,2,83.3,100,3

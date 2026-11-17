@@ -17,7 +17,7 @@ const path = require('path');
   await page.waitForTimeout(600);
   await foto('01_tablero_importado');
 
-  await page.selectOption('#filtro', 'MAJES');
+  await page.selectOption('#filtro', 'Majes');
   await page.waitForTimeout(400);
   await foto('02_filtro_majes');
   await page.selectOption('#filtro', '');
@@ -32,8 +32,8 @@ const path = require('path');
   await foto('04_publicacion_permitida');
 
   // Intento de inyección HTML a través del CSV
-  const csv = 'id,fecha_notificacion,provincia,distrito,grupo_etario,episodios,estado_validacion\n' +
-    'EDA-X-1,2025-01-06,AREQUIPA,CAYMA,<img src=x onerror="document.title=\'INYECTADO\'">,1,PENDIENTE\n';
+  const csv = 'id,fecha_notificacion,establecimiento,distrito,grupo_etario,evento,estado_validacion\n' +
+    'IRAS-X-1,2026-01-12,CS Francisco Bolognesi,Cayma,<img src=x onerror="document.title=\'INYECTADO\'">,IRAS,PENDIENTE\n';
   await page.setInputFiles('#archivo', { name: 'inyeccion.csv', mimeType: 'text/csv', buffer: Buffer.from(csv) });
   await page.click('#btnImportar');
   await page.waitForTimeout(800);

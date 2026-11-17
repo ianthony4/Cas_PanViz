@@ -1,0 +1,8 @@
+b2e236e | 2026-11-16 20:13:10 -0500 | Anthony Chaisa | refactor(vista): celda de valor usa esc(r.valor) || marcador vacio
+6326330 | 2026-11-16 20:12:57 -0500 | Anthony Chaisa | test(ver): corregir falso positivo de test_d02 (ternario ya escapado)
+bd9febb | 2026-11-16 20:12:27 -0500 | Anthony Chaisa | feat(CR-01): regla RV6 fecha no futura, cambio localizado en reglas.py
+8df2971 | 2026-11-16 20:12:27 -0500 | Anthony Chaisa | fix(H01,H02): el lote mas reciente retira IDs rechazados; la vista escapa valores del CSV
+6b35710 | 2026-11-16 20:12:00 -0500 | Anthony Chaisa | test(ver): reproducir defectos D01 (registro obsoleto) y D02 (inyeccion HTML) hallados en verificacion de v1
+fc8f20f | 2026-11-16 20:10:32 -0500 | Anthony Chaisa | feat(prototipo): v1 importador, validador, resumen, persistencia y permisos EDAv1.0            feat(prototipo): v1 importador, validador, resumen, persistencia y permisos EDA
+v2.0            refactor(vista): celda de valor usa esc(r.valor) || marcador vacio
+

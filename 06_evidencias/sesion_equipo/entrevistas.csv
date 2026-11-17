@@ -1,0 +1,11 @@
+entrevista,tema,entrevistador,entrevistado,n,pregunta,evidencia_a_corroborar,respuesta,evidencia_corroborada,discrepancia
+E1,Uso del proceso,Alexander Villafuerte,Jael Huarca,1,¿Qué actividades del proceso estándar seguiste al implementar el validador y en qué orden?,E02; E12 (historial git),,,
+E1,Uso del proceso,Alexander Villafuerte,Jael Huarca,2,¿Cómo registraste un cambio en el código y quién lo revisó y aprobó?,E06,,,
+E1,Uso del proceso,Alexander Villafuerte,Jael Huarca,3,¿Qué diferencia hubo al aplicar el proceso en F1 frente a F2 y por qué?,E03,,,
+E1,Uso del proceso,Alexander Villafuerte,Jael Huarca,4,Muestra en vivo el commit que corrigió D01 y explica la causa,E12; E16,,,
+E1,Uso del proceso,Alexander Villafuerte,Jael Huarca,5,¿Qué cambiarías del proceso v2?,E05,,,
+E2,Validación de resultados,Alexander Villafuerte,Mario Champi,1,¿Cómo calculaste el oráculo y lo hiciste antes o después de ejecutar el código?,E10,,,
+E2,Validación de resultados,Alexander Villafuerte,Mario Champi,2,Muestra en el tablero los casos de Majes y compáralos con tu cálculo,E15 (demostración),,,
+E2,Validación de resultados,Alexander Villafuerte,Mario Champi,3,¿En qué caso rechazarías un escenario de validación?,E20,,,
+E2,Validación de resultados,Alexander Villafuerte,Mario Champi,4,¿Qué riesgo se materializó y cómo lo sabes?,E09; E16,,,
+E2,Validación de resultados,Alexander Villafuerte,Mario Champi,5,¿Publicarías hoy esta información? ¿Qué falta?,E25,,,

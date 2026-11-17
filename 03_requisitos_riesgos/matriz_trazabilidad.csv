@@ -1,0 +1,7 @@
+requisito,criterio_proceso,evidencia,prueba,hallazgo,accion,riesgo,caracteristica,area_ver_val
+R1,RD-C2;VER-C2,E10;E15,T03;T12,—,—,RK3,Eficiencia de desempeño,VER
+R2,RD-C1;RD-C4;VER-C2,E07;E10;E15,T01;T11,—,—,RK1,Adecuación funcional / Mantenibilidad,VER
+R3,RD-C2;VER-C2,E10;E15,T02;T04,—,—,RK2,Adecuación funcional / Eficiencia,VER
+R4,RD-C4;VER-C4,E06;E16;E15,T05;T06;D01,H01,A01,RK1,Fiabilidad,VER
+R5,VER-C3;VER-C4,E17;E18;E16,T07;T08;D02,H02,A02,RK4,Seguridad,VER
+R6,VAL-C1;VAL-C2;VAL-C3,E20;E25,T09;T10,H06,A3,RK5,Capacidad de interacción,VAL

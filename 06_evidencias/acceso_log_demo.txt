@@ -1,0 +1,4 @@
+2026-11-16T21:06:56	digitador01	importar	PERMITIDO
+2026-11-16T21:06:57	digitador01	publicar	DENEGADO
+2026-11-16T21:06:57	resp.vigilancia	publicar	PERMITIDO
+2026-11-16T21:06:58	resp.vigilancia	importar	PERMITIDO

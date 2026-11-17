@@ -1,0 +1,27 @@
+ID,Tipo,Archivo o enlace,Version,Fecha,Autor,Revisor,Flujo,Requiere sesion,Criterios que respalda
+E01,Plan,01_plan/plan_evaluacion.md,1.0,2026-11-16,Anthony Chaisa,Mario Champi,Ambos,false,IPM-C1
+E02,Proceso,02_procesos/proceso_estandar_v1.md,1.0,2026-11-16,Anthony Chaisa,Mario Champi,Ambos,false,OPD-C1
+E03,Proceso,02_procesos/guia_adaptacion.md,1.0,2026-11-16,Anthony Chaisa,Mario Champi,Ambos,false,OPD-C2
+E04,Plantilla,02_procesos/plantillas/,2.0,2026-11-16,Anthony Chaisa,Alexander Villafuerte,Ambos,false,"OPD-C1, VER-C1"
+E05,Proceso,02_procesos/proceso_estandar_v2.md,2.0,2026-11-16,Anthony Chaisa,Mario Champi,Ambos,false,OPD-C4
+E06,Registro de cambios,02_procesos/registro_cambios.md,1.0,2026-11-16,Anthony Chaisa,Jael Huarca,Ambos,false,"IPM-C2, OPD-C4, RD-C4"
+E07,Requisitos,03_requisitos_riesgos/requisitos.md,1.1,2026-11-16,Mario Champi,Jael Huarca,Ambos,false,"OPD-C2, RD-C1, RD-C4"
+E08,Trazabilidad,03_requisitos_riesgos/matriz_trazabilidad.csv,1.0,2026-11-16,Mario Champi,Jael Huarca,Ambos,false,"RD-C2, RSKM-C2"
+E09,Riesgos,03_requisitos_riesgos/riesgos.md,1.1,2026-11-16,Mario Champi,Anthony Chaisa,Ambos,false,"RSKM-C1, RSKM-C2, RSKM-C4"
+E10,Datos,04_prototipo/datos/iras_sinteticos_30.csv + oraculo_esperado.json + catalogo_distritos.csv,1.0,2026-11-16,Mario Champi,Jael Huarca,F1,false,RD-C2
+E11,Código,04_prototipo (git tag v1.0),v1.0,2026-11-16,Jael Huarca,Alexander Villafuerte,Ambos,false,
+E12,Código,04_prototipo (git tag v2.0) + historial_git.txt,v2.0,2026-11-16,Jael Huarca,Alexander Villafuerte,Ambos,false,"IPM-C2, VER-C4"
+E13,Plan de pruebas,05_pruebas/plan_pruebas.md,1.0,2026-11-16,Alexander Villafuerte,Anthony Chaisa,Ambos,false,"OPD-C2, VER-C1"
+E14,Resultados,05_pruebas/resultados_v1.csv + log_pytest_v1.txt,v1.0,2026-11-16,Alexander Villafuerte,Anthony Chaisa,Ambos,false,VER-C2
+E15,Resultados,05_pruebas/resultados_v2.csv + log_pytest_v2.txt,v2.0,2026-11-16,Alexander Villafuerte,Anthony Chaisa,Ambos,false,"RD-C2, VER-C2, VER-C4"
+E16,Defectos,05_pruebas/registro_defectos.md,1.0,2026-11-16,Alexander Villafuerte,Jael Huarca,Ambos,false,"RSKM-C4, VER-C4"
+E17,Log de acceso,06_evidencias/acceso_log_demo.txt,v2.0,2026-11-16,Jael Huarca,Alexander Villafuerte,F2,false,
+E18,Captura,06_evidencias/capturas/,v1.0/v2.0,2026-11-16,Jael Huarca,Alexander Villafuerte,F2,false,
+E19,Seguimiento,01_plan/seguimiento.md,1.0,2026-11-16,Anthony Chaisa,Mario Champi,Ambos,false,IPM-C4
+E20,Escenarios VAL,05_pruebas/escenarios_validacion.md,1.0,2026-11-16,Alexander Villafuerte,Mario Champi,F2,false,VAL-C1
+E21,Tablero,07_tablero/PANVIZ_Evaluacion.grist + exportaciones,1.0,2026-11-16,Mario Champi,Jael Huarca,Ambos,false,
+E22,Revisión cruzada,06_evidencias/sesion_equipo/revisiones.csv,1.0,2026-11-16,Equipo,Equipo,Ambos,true,
+E23,Entrevista,06_evidencias/sesion_equipo/entrevistas.csv (E1 uso del proceso),1.0,2026-11-16,Alexander Villafuerte,Anthony Chaisa,Ambos,true,
+E24,Entrevista,06_evidencias/sesion_equipo/entrevistas.csv (E2 validación),1.0,2026-11-16,Alexander Villafuerte,Anthony Chaisa,F2,true,
+E25,Acta de usuario,06_evidencias/sesion_equipo/validacion_usuario.csv + 04_prototipo/logs/usabilidad.csv,1.0,2026-11-16,Alexander Villafuerte,Mario Champi,F2,true,
+E26,Lecturas,01_plan/plan_evaluacion.md §4 (decisiones TMMi y CMMI 2026),1.0,2026-11-16,Anthony Chaisa,Mario Champi,Ambos,false,IPM-C1

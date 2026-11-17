@@ -29,6 +29,8 @@ CATALOGO = [
     ("T10", "R6", "Capacidad de interacción", "Usuario simulado localiza el resumen de un distrito", "Completada en <= 90 s sin ayuda", "test_t09_t10_tareas_de_usuario[T10]"),
     ("T11", "R2", "Mantenibilidad", "Nueva regla regla_fecha_no_futura en reglas.py", "Rechaza fecha futura sin cambiar web.py ni index.html", "test_t11"),
     ("T12", "R1-R5", "Mantenibilidad", "Flujo completo tras el cambio", "Oráculo y seguridad se mantienen", "test_t12"),
+    ("D01", "R3/R4", "Fiabilidad (defecto H01)", "Lote corregido donde IRAS-2026-001 pasa a fecha inválida", "Ningún ID aceptado y rechazado a la vez; 23 aceptados", "test_d01"),
+    ("D02", "R5", "Seguridad (defecto H02)", "Plantilla index.html", "Todo valor del CSV se inserta escapado", "test_d02"),
 ]
 
 

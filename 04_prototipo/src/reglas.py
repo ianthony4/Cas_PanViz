@@ -5,7 +5,7 @@ Para añadir una regla basta con escribir la función y agregarla a REGLAS;
 la vista y el resto del flujo no cambian (requisito de mantenibilidad, T11).
 """
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Callable, Dict, List, Optional, Tuple
 
 from src.config import ANIO_MAX, ANIO_MIN, COLUMNAS_OBLIGATORIAS, EVENTO, FORMATO_FECHA, GRUPOS_ETARIOS, cargar_catalogo
@@ -52,12 +52,24 @@ def regla_distrito_catalogo(fila: Dict[str, str]) -> Falla:
     return None
 
 
+def regla_fecha_no_futura(fila: Dict[str, str]) -> Falla:
+    """RV6 (CR-01): la fecha de notificación no puede ser posterior a la fecha de corte (hoy)."""
+    try:
+        fecha = datetime.strptime(fila.get("fecha_notificacion", ""), FORMATO_FECHA).date()
+    except ValueError:
+        return None  # el formato lo controla regla_fecha_valida
+    if fecha > date.today():
+        return "fecha_notificacion", f"Fecha de notificación posterior a la fecha de corte: {fecha.isoformat()}"
+    return None
+
+
 REGLAS: List[Regla] = [
     regla_campos_obligatorios,
     regla_fecha_valida,
     regla_evento,
     regla_grupo_etario,
     regla_distrito_catalogo,
+    regla_fecha_no_futura,
 ]
 
 

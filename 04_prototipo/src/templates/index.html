@@ -96,6 +96,8 @@
 </main>
 <script>
 const $ = s => document.querySelector(s);
+// H02: todo valor que viene del CSV se escapa antes de insertarlo en el HTML
+const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let tarea = null;
 
 function aviso(texto, tipo) { const m = $('#mensaje'); m.textContent = texto; m.className = tipo; }
@@ -115,16 +117,16 @@ async function refrescar() {
   $('#kInf').textContent = e.resumen.reduce((a, r) => a + r.infantil_menor_5, 0);
   $('#kMay').textContent = e.resumen.reduce((a, r) => a + r.adulto_mayor_60, 0);
   const max = Math.max(1, ...e.resumen.map(r => r.casos));
-  $('#tResumen tbody').innerHTML = e.resumen.map(r => `<tr><td>${r.provincia}</td><td>${r.distrito}</td>
-    ${G.map(g => `<td class="n">${r[g]}</td>`).join('')}<td class="n"><b>${r.casos}</b></td>
+  $('#tResumen tbody').innerHTML = e.resumen.map(r => `<tr><td>${esc(r.provincia)}</td><td>${esc(r.distrito)}</td>
+    ${G.map(g => `<td class="n">${esc(r[g])}</td>`).join('')}<td class="n"><b>${esc(r.casos)}</b></td>
     <td><span class="barra" style="width:${r.infantil_menor_5 / max * 120}px" title="Menores de 5 años"></span><span class="barra b2" style="width:${r.adulto_mayor_60 / max * 120}px" title="60 años a más"></span></td></tr>`).join('')
     || '<tr><td colspan="10" class="muted">Sin datos. Importe un archivo.</td></tr>';
   if (!d) {
     const actuales = new Set([...$('#filtro').options].map(o => o.value));
     e.resumen.forEach(r => { if (!actuales.has(r.distrito)) $('#filtro').add(new Option(r.distrito, r.distrito)); });
   }
-  $('#tRech tbody').innerHTML = e.rechazados.map(r => `<tr><td>${r.fila_datos}</td><td>${r.id}</td><td>${r.campo}</td><td>${r.motivo}</td>
-    <td>${r.valor || '<i class="muted">vacío</i>'}</td><td><button data-fila="${r.fila_datos}" data-campo="${r.campo}" data-valor="${r.valor}">Corregir</button></td></tr>`).join('')
+  $('#tRech tbody').innerHTML = e.rechazados.map(r => `<tr><td>${esc(r.fila_datos)}</td><td>${esc(r.id)}</td><td>${esc(r.campo)}</td><td>${esc(r.motivo)}</td>
+    <td>${r.valor ? esc(r.valor) : '<i class="muted">vacío</i>'}</td><td><button data-fila="${esc(r.fila_datos)}" data-campo="${esc(r.campo)}" data-valor="${esc(r.valor)}">Corregir</button></td></tr>`).join('')
     || '<tr><td colspan="6" class="muted">No hay rechazados.</td></tr>';
 }
 

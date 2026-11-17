@@ -22,7 +22,8 @@ def test_d01_lote_corregido_no_deja_registros_obsoletos(entorno, oraculo, tmp_pa
     lote.write_text(texto.replace("IRAS-2026-001,2026-01-12", "IRAS-2026-001,2026-13-12"), encoding="utf-8")
     servicio.importar(lote)
     aceptados = {r["id"] for r in json.loads(config.ARCHIVO_ACEPTADOS.read_text(encoding="utf-8"))}
-    rechazados = {r["id"] for r in servicio.estado()["rechazados"]}
+    # los rechazos por ID duplicado conviven legítimamente con el primer registro aceptado
+    rechazados = {r["id"] for r in servicio.estado()["rechazados"] if r["campo"] != "id"}
     cerro = next(f for f in servicio.estado()["resumen"] if f["distrito"] == "Cerro Colorado")
     observar({"aceptados": len(aceptados), "en_ambos": sorted(aceptados & rechazados), "casos_cerro_colorado": cerro["casos"]})
     assert not (aceptados & rechazados)

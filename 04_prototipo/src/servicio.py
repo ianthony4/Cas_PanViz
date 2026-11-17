@@ -25,6 +25,11 @@ def importar(ruta: Union[str, Path], usuario: str = "digitador01") -> dict:
     previos = {r["id"]: r for r in repositorio.leer_aceptados()}
     for reg in resultado.aceptados:
         previos[reg.id] = reg.a_dict()
+    # H01: el lote más reciente manda; si un ID aceptado antes ahora llega inválido, sale del conjunto
+    ids_lote = {reg.id for reg in resultado.aceptados}
+    for rech in resultado.rechazados:
+        if rech.id not in ids_lote:
+            previos.pop(rech.id, None)
     aceptados = sorted(previos.values(), key=lambda r: r["id"])
 
     repositorio.guardar_aceptados(aceptados)

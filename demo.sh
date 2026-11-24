@@ -5,8 +5,11 @@
 set -e
 cd "$(dirname "$0")"
 RAIZ_TRABAJO="$(cd .. && pwd)"
-PY=${PY:-$RAIZ_TRABAJO/.venv/bin/python}
-[ -x "$PY" ] || PY=python3
+if [ -z "${PY:-}" ]; then
+  if [ -x "$PWD/04_prototipo/.venv/bin/python" ]; then PY="$PWD/04_prototipo/.venv/bin/python"
+  elif [ -x "$RAIZ_TRABAJO/.venv/bin/python" ]; then PY="$RAIZ_TRABAJO/.venv/bin/python"
+  else PY=python3; fi
+fi
 GRIST_APP=${GRIST_APP:-$RAIZ_TRABAJO/herramientas/grist-desktop-0.3.17-linux-x86_64.AppImage}
 
 cd 04_prototipo

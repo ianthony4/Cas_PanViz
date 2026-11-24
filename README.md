@@ -22,7 +22,8 @@ Piloto de adopción de procesos orientado a CMMI DEV v1.3 nivel 3 sobre un micro
 Requiere Python 3.10 o superior.
 
 ```bash
-cd 04_prototipo
+git clone https://github.com/ianthony4/Cas_PanViz.git
+cd Cas_PanViz/04_prototipo
 python -m venv .venv
 .venv/bin/pip install -r requirements.txt         # En Windows: .venv\Scripts\pip install -r requirements.txt
 .venv/bin/python -m src.app importar datos/iras_sinteticos_30.csv
@@ -33,6 +34,8 @@ python -m venv .venv
 ```
 
 En la interfaz web: elija un usuario, pulse "Importar datos" (sin archivo se usa el CSV de ejemplo), filtre por distrito, corrija un registro rechazado y publique. Para medir T09 y T10 se usa el panel "Medición de tareas de usuario".
+
+Para la demostración en vivo, `./demo.sh` (desde la raíz, en Linux) deja el prototipo vacío, lo levanta y abre el navegador. También abre el tablero si Grist Desktop está en la ruta indicada por `GRIST_APP`; si no, abra `07_tablero/PANVIZ_Evaluacion.grist` manualmente.
 
 ## Cómo reproducir las pruebas y las métricas
 
@@ -55,6 +58,8 @@ El índice está en `07_tablero/datos/evidencias.csv` (E01–E26). En Grist, la 
 Después de llenar las actas de la sesión del equipo (ver `GUIA_SESION_EQUIPO.md`):
 
 ```bash
+04_prototipo/.venv/bin/pip install -r requirements-informe.txt
+(cd 08_informe && npm install)
 ./regenerar.sh
 ```
 
@@ -62,4 +67,4 @@ Este script vuelve a ejecutar las pruebas, recalcula los indicadores y regenera 
 
 ## Fuentes
 
-TMMi Foundation (2023), *The New MDD and TAMAR*; CMMI Institute (2026), *Quality Tip: Appraisal Findings*; ISO/IEC 33002:2015; ISO/IEC 25010:2023; Grist Community (Apache 2.0). Los datos son sintéticos: las 20 primeras notificaciones provienen del dataset original del equipo y se agregaron 10 (incluido Caylloma) para llegar a 30. Grupos etarios según el catálogo MINSA de IRAS.
+TMMi Foundation (2023), *The New MDD and TAMAR*; CMMI Institute (2026), *Quality Tip: Appraisal Findings*; ISO/IEC 33002:2015; ISO/IEC 25010:2023; Grist Community (Apache 2.0). `08_informe/apply_theme.js` se distribuye bajo Apache 2.0 (ver `08_informe/apply_theme.LICENSE.txt`). Los datos son sintéticos: las 20 primeras notificaciones provienen del dataset original del equipo y se agregaron 10 (incluido Caylloma) para llegar a 30. Grupos etarios según el catálogo MINSA de IRAS.

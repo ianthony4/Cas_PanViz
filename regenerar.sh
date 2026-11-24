@@ -4,7 +4,12 @@
 # GRIST_KEY y GRIST_DOC (para reconstruir y exportar el documento Grist).
 set -e
 cd "$(dirname "$0")"
-PY=${PY:-python3}
+RAIZ_TRABAJO="$(cd .. && pwd)"
+if [ -z "${PY:-}" ]; then
+  if [ -x "$PWD/04_prototipo/.venv/bin/python" ]; then PY="$PWD/04_prototipo/.venv/bin/python"
+  elif [ -x "$RAIZ_TRABAJO/.venv/bin/python" ]; then PY="$RAIZ_TRABAJO/.venv/bin/python"
+  else PY=python3; fi
+fi
 (cd 04_prototipo && $PY scripts/ejecutar_pruebas.py v2)
 $PY 07_tablero/calcular_indicadores.py
 if [ -n "$GRIST_KEY" ]; then

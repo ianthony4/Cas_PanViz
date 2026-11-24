@@ -2,7 +2,7 @@
 
 ## D01 · Un registro aceptado antes seguía contando aunque el lote nuevo lo rechazaba
 
-- **Versión:** v1.0 (commit 9890135)
+- **Versión:** v1.0 (commit 6d2b03b)
 - **Cómo se encontró:** durante la prueba exploratoria de reimportación. Primero se importó el lote original. Luego se importó un lote corregido en el que IRAS-2026-001 llegaba con la fecha 2026-13-12, que no existe.
 - **Observado:** el lote corregido rechazó IRAS-2026-001, pero el conjunto aceptado lo conservó. Ese ID aparecía a la vez como aceptado y como rechazado, y el tablero seguía contando ese caso en Cerro Colorado (4 casos en lugar de 3, y un menor de 1 año de más).
 - **Esperado:** el último lote recibido manda. Si un ID llega inválido, sale de los aceptados.

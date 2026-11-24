@@ -348,7 +348,7 @@
    "T01": {
     "id": "T01",
     "version": "v1",
-    "commit": "9890135",
+    "commit": "6d2b03b",
     "requisito": "R2",
     "caracteristica": "Adecuación funcional",
     "entrada": "iras_sinteticos_30.csv (6 inválidos sembrados)",
@@ -361,7 +361,7 @@
    "T02": {
     "id": "T02",
     "version": "v1",
-    "commit": "9890135",
+    "commit": "6d2b03b",
     "requisito": "R3",
     "caracteristica": "Adecuación funcional",
     "entrada": "iras_sinteticos_30.csv + oraculo_esperado.json",
@@ -374,7 +374,7 @@
    "T03": {
     "id": "T03",
     "version": "v1",
-    "commit": "9890135",
+    "commit": "6d2b03b",
     "requisito": "R1",
     "caracteristica": "Eficiencia de desempeño",
     "entrada": "Importación de 30 filas, 3 repeticiones",
@@ -387,7 +387,7 @@
    "T04": {
     "id": "T04",
     "version": "v1",
-    "commit": "9890135",
+    "commit": "6d2b03b",
     "requisito": "R3",
     "caracteristica": "Eficiencia de desempeño",
     "entrada": "Corrección + reimportación + resumen, 3 repeticiones",
@@ -400,7 +400,7 @@
    "T05": {
     "id": "T05",
     "version": "v1",
-    "commit": "9890135",
+    "commit": "6d2b03b",
     "requisito": "R4",
     "caracteristica": "Fiabilidad",
     "entrada": "Mismo archivo importado dos veces",
@@ -413,7 +413,7 @@
    "T06": {
     "id": "T06",
     "version": "v1",
-    "commit": "9890135",
+    "commit": "6d2b03b",
     "requisito": "R4",
     "caracteristica": "Fiabilidad",
     "entrada": "Importar, publicar y leer desde un proceso nuevo",
@@ -426,7 +426,7 @@
    "T07": {
     "id": "T07",
     "version": "v1",
-    "commit": "9890135",
+    "commit": "6d2b03b",
     "requisito": "R5",
     "caracteristica": "Seguridad",
     "entrada": "digitador01 e intruso intentan publicar",
@@ -439,7 +439,7 @@
    "T08": {
     "id": "T08",
     "version": "v1",
-    "commit": "9890135",
+    "commit": "6d2b03b",
     "requisito": "R5",
     "caracteristica": "Seguridad",
     "entrada": "Publicación denegada tras cambiar el conjunto aceptado",
@@ -452,7 +452,7 @@
    "T09": {
     "id": "T09",
     "version": "v1",
-    "commit": "9890135",
+    "commit": "6d2b03b",
     "requisito": "R6",
     "caracteristica": "Capacidad de interacción",
     "entrada": "Usuario simulado corrige un registro rechazado",
@@ -465,7 +465,7 @@
    "T10": {
     "id": "T10",
     "version": "v1",
-    "commit": "9890135",
+    "commit": "6d2b03b",
     "requisito": "R6",
     "caracteristica": "Capacidad de interacción",
     "entrada": "Usuario simulado localiza el resumen de un distrito",
@@ -478,7 +478,7 @@
    "T11": {
     "id": "T11",
     "version": "v1",
-    "commit": "9890135",
+    "commit": "6d2b03b",
     "requisito": "R2",
     "caracteristica": "Mantenibilidad",
     "entrada": "Nueva regla regla_fecha_no_futura en reglas.py",
@@ -491,7 +491,7 @@
    "T12": {
     "id": "T12",
     "version": "v1",
-    "commit": "9890135",
+    "commit": "6d2b03b",
     "requisito": "R1-R5",
     "caracteristica": "Mantenibilidad",
     "entrada": "Flujo completo tras el cambio",
@@ -504,7 +504,7 @@
    "D01": {
     "id": "D01",
     "version": "v1",
-    "commit": "9890135",
+    "commit": "6d2b03b",
     "requisito": "R3/R4",
     "caracteristica": "Fiabilidad (defecto H01)",
     "entrada": "Lote corregido donde IRAS-2026-001 pasa a fecha inválida",
@@ -517,7 +517,7 @@
    "D02": {
     "id": "D02",
     "version": "v1",
-    "commit": "9890135",
+    "commit": "6d2b03b",
     "requisito": "R5",
     "caracteristica": "Seguridad (defecto H02)",
     "entrada": "Plantilla index.html",
@@ -532,7 +532,7 @@
    "T01": {
     "id": "T01",
     "version": "v2",
-    "commit": "4899660",
+    "commit": "fad9d05",
     "requisito": "R2",
     "caracteristica": "Adecuación funcional",
     "entrada": "iras_sinteticos_30.csv (6 inválidos sembrados)",
@@ -545,7 +545,7 @@
    "T02": {
     "id": "T02",
     "version": "v2",
-    "commit": "4899660",
+    "commit": "fad9d05",
     "requisito": "R3",
     "caracteristica": "Adecuación funcional",
     "entrada": "iras_sinteticos_30.csv + oraculo_esperado.json",
@@ -558,7 +558,7 @@
    "T03": {
     "id": "T03",
     "version": "v2",
-    "commit": "4899660",
+    "commit": "fad9d05",
     "requisito": "R1",
     "caracteristica": "Eficiencia de desempeño",
     "entrada": "Importación de 30 filas, 3 repeticiones",
@@ -571,7 +571,7 @@
    "T04": {
     "id": "T04",
     "version": "v2",
-    "commit": "4899660",
+    "commit": "fad9d05",
     "requisito": "R3",
     "caracteristica": "Eficiencia de desempeño",
     "entrada": "Corrección + reimportación + resumen, 3 repeticiones",
@@ -584,7 +584,7 @@
    "T05": {
     "id": "T05",
     "version": "v2",
-    "commit": "4899660",
+    "commit": "fad9d05",
     "requisito": "R4",
     "caracteristica": "Fiabilidad",
     "entrada": "Mismo archivo importado dos veces",
@@ -597,7 +597,7 @@
    "T06": {
     "id": "T06",
     "version": "v2",
-    "commit": "4899660",
+    "commit": "fad9d05",
     "requisito": "R4",
     "caracteristica": "Fiabilidad",
     "entrada": "Importar, publicar y leer desde un proceso nuevo",
@@ -610,7 +610,7 @@
    "T07": {
     "id": "T07",
     "version": "v2",
-    "commit": "4899660",
+    "commit": "fad9d05",
     "requisito": "R5",
     "caracteristica": "Seguridad",
     "entrada": "digitador01 e intruso intentan publicar",
@@ -623,7 +623,7 @@
    "T08": {
     "id": "T08",
     "version": "v2",
-    "commit": "4899660",
+    "commit": "fad9d05",
     "requisito": "R5",
     "caracteristica": "Seguridad",
     "entrada": "Publicación denegada tras cambiar el conjunto aceptado",
@@ -636,7 +636,7 @@
    "T09": {
     "id": "T09",
     "version": "v2",
-    "commit": "4899660",
+    "commit": "fad9d05",
     "requisito": "R6",
     "caracteristica": "Capacidad de interacción",
     "entrada": "Usuario simulado corrige un registro rechazado",
@@ -649,7 +649,7 @@
    "T10": {
     "id": "T10",
     "version": "v2",
-    "commit": "4899660",
+    "commit": "fad9d05",
     "requisito": "R6",
     "caracteristica": "Capacidad de interacción",
     "entrada": "Usuario simulado localiza el resumen de un distrito",
@@ -662,7 +662,7 @@
    "T11": {
     "id": "T11",
     "version": "v2",
-    "commit": "4899660",
+    "commit": "fad9d05",
     "requisito": "R2",
     "caracteristica": "Mantenibilidad",
     "entrada": "Nueva regla regla_fecha_no_futura en reglas.py",
@@ -675,7 +675,7 @@
    "T12": {
     "id": "T12",
     "version": "v2",
-    "commit": "4899660",
+    "commit": "fad9d05",
     "requisito": "R1-R5",
     "caracteristica": "Mantenibilidad",
     "entrada": "Flujo completo tras el cambio",
@@ -688,7 +688,7 @@
    "D01": {
     "id": "D01",
     "version": "v2",
-    "commit": "4899660",
+    "commit": "fad9d05",
     "requisito": "R3/R4",
     "caracteristica": "Fiabilidad (defecto H01)",
     "entrada": "Lote corregido donde IRAS-2026-001 pasa a fecha inválida",
@@ -701,7 +701,7 @@
    "D02": {
     "id": "D02",
     "version": "v2",
-    "commit": "4899660",
+    "commit": "fad9d05",
     "requisito": "R5",
     "caracteristica": "Seguridad (defecto H02)",
     "entrada": "Plantilla index.html",

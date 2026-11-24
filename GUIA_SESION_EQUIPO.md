@@ -22,7 +22,7 @@ En la columna `decision`, Mario escribe "Aceptado" o "Rechazado" para VAL-1 (T10
 - **E1 (uso del proceso):** Alexander entrevista a Jael.
 - **E2 (validación de resultados):** Alexander entrevista a Mario.
 
-Para cada pregunta se anotan la respuesta (en pocas palabras), la evidencia que se corroboró (por ejemplo "E12, commit f3ec0b8 mostrado en vivo") y cualquier discrepancia entre lo que se dijo y lo que muestra la evidencia. Si no hubo discrepancia, la celda se deja vacía.
+Para cada pregunta se anotan la respuesta (en pocas palabras), la evidencia que se corroboró (por ejemplo "E12, commit 3dd2093 mostrado en vivo") y cualquier discrepancia entre lo que se dijo y lo que muestra la evidencia. Si no hubo discrepancia, la celda se deja vacía.
 
 ## 4. Revisión cruzada (5 min, en paralelo) · `06_evidencias/sesion_equipo/revisiones.csv`
 

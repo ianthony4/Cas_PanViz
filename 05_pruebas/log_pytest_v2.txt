@@ -1,4 +1,4 @@
-Ejecución 2026-11-16T21:08:47 · versión v2 · commit 4899660
+Ejecución 2026-11-16T21:08:47 · versión v2 · commit fad9d05
 
 ============================= test session starts ==============================
 platform linux -- Python 3.13.5, pytest-9.2.0, pluggy-1.7.0 -- /home/achaisa/unsa/Cas-Scampi/.venv/bin/python
